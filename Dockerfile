@@ -26,7 +26,7 @@ RUN set -x \
                 && ./${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir /home/steam/l4d2server +app_update 222860 +quit \
 				&& mkdir -p \"${L4D2SERVER}\" \
 				&& wget -qO- 'https://github.com/ekarunian/l4d2-server-data/archive/main.tar.gz' | tar xvzf - -C \"${L4D2SERVER}\" \
-				&& rsync -a \"${L4D2SERVER}/l4d2-server-data-main/addons\" \"${L4D2SERVER}/l4d2-server-data-main/cfg\" \"${L4D2SERVER}\" \
+				&& rsync -a \"${L4D2SERVER}/l4d2-server-data-main/addons\" \"${L4D2SERVER}/l4d2-server-data-main/cfg\" \"${L4D2SERVER}/l4d2-server-data-main/motd.txt\" \"${L4D2SERVER}\" \
 				&& rm -r \"${L4D2SERVER}/l4d2-server-data-main\" \
                 && mkdir -p \"${HOMEDIR}/.steam/sdk32\" \
                 && ln -s \"${STEAMCMDDIR}/linux32/steamclient.so\" \"${HOMEDIR}/.steam/sdk32/steamclient.so\" \
@@ -46,4 +46,4 @@ WORKDIR ${L4D2SERVER}
 
 VOLUME ${L4D2SERVER}
 
-EXPOSE 27015/tcp 27015/udp 27020/udp
+EXPOSE 27015/tcp 27015/udp
